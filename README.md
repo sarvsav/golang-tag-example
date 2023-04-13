@@ -77,3 +77,37 @@ Update the following code to `main.go`:
 ```go
 fmt.Println("Hello, stable")
 ```
+
+And, performed the below steps:
+
+```bash
+## Add and commit the changes
+git add main.go 
+git commit -m "Update main.go"
+
+## Created the stable tag
+git tag stable
+
+## Checkout and merge to main branch
+git checkout main
+git merge v1.0.0
+
+## Push everything to remote
+git push origin --all
+git push origin --tags
+```
+
+Now, let's try to install the package using the following command:
+
+```bash
+go install github.com/sarvsav/golang-tag-example@stable
+```
+
+Now, run the binary and verify the output:
+
+```bash
+$ golang-tag-example.exe 
+Hello, stable
+```
+
+Hope, it helps you to understand how to use tags in golang.
