@@ -21,4 +21,14 @@ Once the module is initialized, we notice that there is one file present in the
 current directory with named `go.mod` Or you can check the branch v0.0.1 to see
 the file.
 
+Create a new file named `main.go` and add the following code:
 
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, v0.0.2")
+}
+```
