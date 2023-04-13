@@ -39,3 +39,11 @@ install the package using the following command:
 ```bash
 go install github.com/sarvsav/golang-tag-example@alpha
 ```
+
+BONUS: To push all the branches and tags for the remote repo, use the following
+command:
+
+```bash
+git push origin --all ## To push all the branches
+git push origin --tags ## To push all the tags
+```
