@@ -21,6 +21,12 @@ Once the module is initialized, we notice that there is one file present in the
 current directory with named `go.mod` Or you can check the branch v0.0.1 to see
 the file.
 
+Checkout to new branch named `v0.0.2` using the following command:
+
+```bash
+git checkout -b v0.0.2
+```
+
 Create a new file named `main.go` and add the following code:
 
 ```go
@@ -46,4 +52,28 @@ command:
 ```bash
 git push origin --all ## To push all the branches
 git push origin --tags ## To push all the tags
+```
+
+Now, on running the below commands:
+```bash
+$ go install github.com/sarvsav/golang-tag-example@alpha
+go: downloading github.com/sarvsav/golang-tag-example v0.0.0-20230413191708-b8f379cb72fb
+
+$ golang-tag-example.exe 
+Hello, v0.0.2
+```
+
+We can see that the package is installed and the output is as expected from
+v0.0.2.
+
+Now, let's repeat the same process and create a stable revision.
+
+```bash
+git checkout -b v1.0.0 ## Checkout to stable branch
+```
+
+Update the following code to `main.go`:
+
+```go
+fmt.Println("Hello, stable")
 ```
