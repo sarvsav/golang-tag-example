@@ -32,3 +32,10 @@ func main() {
 	fmt.Println("Hello, v0.0.2")
 }
 ```
+
+Now, we have tagged the branch v0.0.2 with tag `alpha`. Now, let's try to
+install the package using the following command:
+
+```bash
+go install github.com/sarvsav/golang-tag-example@alpha
+```
