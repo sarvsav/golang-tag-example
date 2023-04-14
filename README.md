@@ -8,7 +8,13 @@ This repo is a demonstration on how to use stable or custom tags while using
 the `go get ...` command. This is useful when you want to use a specific version
 of a package in your project.
 
-## How to use this repo? Follow the below instructions:
+## How to use this repo? Follow the below instructions
+
+Start by switching to the v0.0.1 branch.
+
+```bash
+git checkout -b v0.0.1
+```
 
 We will start by initializing a new go module here. It can be done using the
 following command:
@@ -20,6 +26,13 @@ go mod init github.com/your_username/golang-tag-example
 Once the module is initialized, we notice that there is one file present in the
 current directory with named `go.mod` Or you can check the branch v0.0.1 to see
 the file.
+
+Switch back to main branch and merge your changes.
+
+```bash
+git checkout main
+git merge v0.0.1
+```
 
 Checkout to new branch named `v0.0.2` using the following command:
 
