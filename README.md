@@ -124,3 +124,25 @@ Hello, stable
 ```
 
 Hope, it helps you to understand how to use tags in golang.
+
+## Adding Dockerfile
+
+Create a Dockerfile in project root that contains information on how to build
+the project.
+
+## Building the image
+
+We need to build the image using the following command:
+
+```bash
+docker build -t golang-tag-example .
+```
+
+## Running the image
+
+To verify the image, we can run the following command that starts the container
+and prints the output on the screen.
+
+```bash
+docker run --name learningtherightway-example golang-tag-example
+```
