@@ -146,3 +146,17 @@ and prints the output on the screen.
 ```bash
 docker run --name learningtherightway-example golang-tag-example
 ```
+
+## Distributing the image using container registry
+
+The docker image now needs to be build using CI system and stored in a container
+registry for distribution. There are different container registries available
+like docker hub, ghcr, etc. We will use GitHub Container Registry for this.
+
+## GitHub Actions for creating image
+
+We will use GitHub Actions to build the image whenever there is a new commit to
+`main` branch or new tag is created. We will use the `docker/build-push-action`
+in this example.
+
+The action file will be stored in `.github/workflows/docker.yml`.
