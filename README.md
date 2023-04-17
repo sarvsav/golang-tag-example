@@ -160,3 +160,11 @@ We will use GitHub Actions to build the image whenever there is a new commit to
 in this example.
 
 The action file will be stored in `.github/workflows/docker.yml`.
+
+## Using go-feature-flag
+
+Install the go module using the following command:
+
+```bash
+go get github.com/thomaspoignant/go-feature-flag
+```
