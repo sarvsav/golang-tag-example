@@ -168,3 +168,54 @@ Install the go module using the following command:
 ```bash
 go get github.com/thomaspoignant/go-feature-flag
 ```
+
+There is already a repo exists containing the featureflag configuration. Here
+are the repo details: [codingtherightway-ff](https://github.com/sarvsav/codingtherightway-ff)
+
+## USing go-feature-flag in the code
+
+```go
+// Start with initializing the SDK
+ err := ffclient.Init(ffclient.Config{
+  PollingInterval: 10 * time.Second,
+  Logger:          log.New(os.Stdout, "", 0),
+  Context:         context.Background(),
+  Retriever: &githubretriever.Retriever{
+   RepositorySlug: "sarvsav/codingtherightway-ff",
+   Branch:         "main",
+   FilePath:       "config/flag-config.yaml",
+   Timeout:        3 * time.Second,
+  },
+ })
+```
+
+Creating the users to test the feature flag:
+
+```go
+ // create users
+ // Anonymous user
+ user1 := ffuser.NewAnonymousUser("aea2fdc1-b9a0-417a-b707-0c9083de68e3")
+ // User with custom attributes
+ user2 := ffuser.NewUserBuilder("785a14bf-d2c5-4caa-9c70-2bbc4e3732a5").
+  AddCustom("guest", true).Build()
+```
+
+Below code with fetch the flag value for the users
+
+```go
+ user1HasAccessToNewAdmin, err := ffclient.BoolVariation("new-admin-access", user1, false)
+ user2HasAccessToNewAdmin, err := ffclient.BoolVariation("flag-only-for-admin", user2, false)
+```
+
+## Verifying the result
+
+As the custom key `admin` is not set for user2, hence the feature flag will be
+disabled for user2.
+
+```bash
+$ go run main.go 
+Hello, stable
+[2023-04-17T17:45:25+02:00] flag new-admin-access added
+[2023-04-17T17:45:25+02:00] flag flag-only-for-admin added
+user1 has access to the new admin
+```
